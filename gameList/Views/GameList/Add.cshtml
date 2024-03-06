@@ -1,0 +1,31 @@
+﻿@model gameList.Models.AddGame; 
+@{
+}
+
+<h1>Adicionar Jogo</h1>
+<form method="post" action="Add" class="mt-4">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="name" asp-for="name">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Descrição:</label>
+        <input type="text" class="form-control" id="description" placeholder="alguma descrição" asp-for="description">
+    </div>
+  <div class="fieldset col-sm-3">
+    <div class="mb-3">
+       <label for="description" class="form-label">ImgUrl:</label>
+            <input type="text" class="form-control" id="url" placeholder="url de imagem" asp-for="imageUrl">
+    </div>
+    <label class="visually-hidden" for="dropdown">Preference</label>
+    <select class="form-select" id="dropdown" asp-for="isDone">
+      <option selected>Choose...</option>
+            <option value="Vou Jogar">Vou Jogar!</option>
+            <option value="Jogando">Jogando...</option>
+            <option value="Já Joguei!">Já Joguei</option>
+    </select>
+  </div>
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Adicionar</button>
+    </div>
+</form>

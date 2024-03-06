@@ -1,0 +1,39 @@
+﻿@model gameList.Models.EditGame;
+@{
+}
+<h1>Editar Jogo</h1>
+<form method="post" action="View" class="mt-4">
+    <div class="mb-3">
+        <label for="id" class="form-label">Id:</label>
+        <input type="text" class="form-control" id="id" asp-for="id" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="createdAt" class="form-label">Data de Criação:</label>
+        <input type="text" class="form-control" id="createdAt" asp-for="createdAt" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="name" asp-for="name">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Descrição:</label>
+        <input type="text" class="form-control" id="description" placeholder="alguma descrição" asp-for="description">
+    </div>
+    <div class="fieldset col-sm-3">
+        <div class="mb-3">
+            <label for="description" class="form-label">ImgUrl:</label>
+            <input type="text" class="form-control" id="url" placeholder="url de imagem" asp-for="imageUrl">
+        </div>
+        <label class="visually-hidden" for="dropdown">Preference</label>
+        <select class="form-select" id="dropdown" asp-for="isDone">
+            <option selected>Choose...</option>
+            <option value="Vou Jogar">Vou Jogar!</option>
+            <option value="Jogando">Jogando...</option>
+            <option value="Já Joguei!">Já Joguei</option>
+        </select>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Editar</button>
+        <button class="btn btn-danger" asp-action="Delete" asp-controller="gamelist" type="submit">Delete</button>
+    </div>
+</form>
