@@ -1,16 +1,21 @@
 ﻿@model List<gameList.Models.Game>
 @{
+    ViewData["Title"] = "Listar Jogos";
 }
 <div class="container">
+    <h1> Listagem de Jogos</h1>
+    <div class="row">
     @foreach(var game in Model){
-    <div class="card mt-3" style="width: 18rem;">
-            <img src="@game.imageUrl" class="card-img-top" style=" width:18rem; height: 15rem" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">@game.name</h5>
-            <p class="card-text">@game.isDone</p>
-                <a href="gamelist/view/@game.id" class="btn btn-primary">Details</a>
+    <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+                <img src="@game.imageUrl" class="card-img-top" style=" width:18rem; height: 15rem" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@game.name</h5>
+                <p class="card-text">@game.isDone</p>
+                    <a href="gamelist/view/@game.id" class="btn btn-primary">Details</a>
+            </div>
         </div>
     </div>
-    
     }
+    </div>
 </div>

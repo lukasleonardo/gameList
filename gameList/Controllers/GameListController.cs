@@ -16,8 +16,8 @@ namespace gameList.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var game = await gameDbContext.Games.ToListAsync();
-            return View(game);
+            var games = await gameDbContext.Games.OrderBy(g => g.name).ToListAsync();
+            return View(games);
         }
 
         [HttpGet]

@@ -1,23 +1,24 @@
 ﻿@model gameList.Models.AddGame; 
 @{
+    ViewData["Title"] = "Adicionar";
 }
 
 <h1>Adicionar Jogo</h1>
-<form method="post" action="Add" class="mt-4">
+<form method="post" action="Add" class="mt-4" onsubmit="return validateForm()">
     <div class="mb-3">
         <label for="name" class="form-label">Nome:</label>
-        <input type="text" class="form-control" id="name" asp-for="name">
+        <input type="text" class="form-control" id="name" asp-for="name" required>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Descrição:</label>
-        <input type="text" class="form-control" id="description" placeholder="alguma descrição" asp-for="description">
+        <input type="text" class="form-control" id="description" placeholder="alguma descrição" asp-for="description" required>
     </div>
   <div class="fieldset col-sm-3">
     <div class="mb-3">
        <label for="description" class="form-label">ImgUrl:</label>
-            <input type="text" class="form-control" id="url" placeholder="url de imagem" asp-for="imageUrl">
+            <input type="text" class="form-control" id="url" placeholder="url de imagem" asp-for="imageUrl" required>
     </div>
-    <label class="visually-hidden" for="dropdown">Preference</label>
+        <label class="visually-hidden" for="dropdown" required>Preference</label>
     <select class="form-select" id="dropdown" asp-for="isDone">
       <option selected>Choose...</option>
             <option value="Vou Jogar">Vou Jogar!</option>
@@ -29,3 +30,4 @@
         <button class="btn btn-primary" type="submit">Adicionar</button>
     </div>
 </form>
+
