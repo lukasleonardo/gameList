@@ -1,6 +1,8 @@
 
 
 using gameList.Data;
+using gameList.Interfaces;
+using gameList.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,8 @@ builder.Services.AddControllersWithViews();
 // Add Db context
 builder.Services.AddDbContext<GameDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IGameService, GameService>();
 
 var app = builder.Build();
 

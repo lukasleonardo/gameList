@@ -1,5 +1,7 @@
 ﻿using gameList.Data;
+using gameList.Interfaces;
 using gameList.Models;
+using gameList.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,16 +10,28 @@ namespace gameList.Controllers
     public class GameListController : Controller
     {
         private readonly GameDbContext gameDbContext;
+        private readonly IGameService gameService;
 
-        public GameListController(GameDbContext gameDbContext)
+        public GameListController(GameDbContext gameDbContext, IGameService gameService)
         {
             this.gameDbContext = gameDbContext;
+            this.gameService = gameService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, string searchTerm = "")
         {
-            var games = await gameDbContext.Games.OrderBy(g => g.name).ToListAsync();
-            return View(games);
+            const int pageSize = 12; // Número de itens por página
+            if (string.IsNullOrWhiteSpace(searchTerm)) {
+                var model = await gameService.GetPagedGames(page, pageSize);
+
+                return View(model);
+            }
+            else
+            {
+                var model = await gameService.SearchGames(searchTerm, page, pageSize);
+                return View(model);
+            }
+
         }
 
         [HttpGet]
